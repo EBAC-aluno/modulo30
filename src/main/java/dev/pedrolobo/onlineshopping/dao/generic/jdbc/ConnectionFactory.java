@@ -1,10 +1,11 @@
-package dev.pedrolobo.onlineshopping.dao.factory;
+package dev.pedrolobo.onlineshopping.dao.generic.jdbc;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.DriverManager;
 
 public class ConnectionFactory {
+
   public static Connection connection;
 
   private static Connection initConnection() {
@@ -14,6 +15,7 @@ public class ConnectionFactory {
       throw new RuntimeException();
     }
   }
+
   public static Connection getConnection() throws SQLException {
     if (connection == null) {
       connection = initConnection();
@@ -24,5 +26,6 @@ public class ConnectionFactory {
     } else {
       return connection;
     }
+
   }
 }

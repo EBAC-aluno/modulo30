@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import dev.pedrolobo.onlineshopping.dao.factory.ConnectionFactory;
+import dev.pedrolobo.onlineshopping.dao.generic.jdbc.ConnectionFactory;
 
 class ConnectionFactoryTest {
 
