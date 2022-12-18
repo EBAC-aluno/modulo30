@@ -174,7 +174,6 @@ public abstract class GenericDAO<T extends Persistence, E extends Serializable> 
         return field.getAnnotation(ColumnTable.class).dbName();
       }
     }
-
     return null;
   }
 

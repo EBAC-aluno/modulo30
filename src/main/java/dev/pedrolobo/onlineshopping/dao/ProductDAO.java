@@ -27,19 +27,23 @@ public class ProductDAO extends GenericDAO<Product, String> implements IProduct 
   @Override
   protected String getQueryInsertion() {
     StringBuilder sb = new StringBuilder();
-    sb.append("INSERT INTO TB_PRODUTct... ");
+    sb.append("INSERT INTO tb_product ");
+    sb.append("(id, code, name, description, value) "); 
+    sb.append("VALUES(nextval('sq_product'), ?, ?, ?, ?)");
     return sb.toString();
   }
 
   @Override
   public String getQueryExclusion() {
-    return "DELETE FROM TB_PRODUct WHERE CODIGO = ?";
+    return "DELETE FROM tb_product WHERE code = ?";
   }
 
   @Override
   protected String getQueryUpdate() {
     StringBuilder sb = new StringBuilder();
-    sb.append("UPDATE TB_PRODUTct ");
+    sb.append("UPDATE tb_product SET ");
+    sb.append("name = ?, description = ?, value = ? ");
+    sb.append("WHERE code = ?");
     return sb.toString();
   }
 
@@ -58,16 +62,14 @@ public class ProductDAO extends GenericDAO<Product, String> implements IProduct 
 
   @Override
   protected void setUpdateQueryParameters(PreparedStatement stmUpdate, Product entity) throws SQLException {
-    stmUpdate.setString(1, entity.getCode());
-    stmUpdate.setString(2, entity.getName());
-    stmUpdate.setString(3, entity.getDescription());
-    stmUpdate.setBigDecimal(4, entity.getValue());
-    stmUpdate.setString(5, entity.getCode()); // It can be a bug
+    stmUpdate.setString(1, entity.getName());
+    stmUpdate.setString(2, entity.getDescription());
+    stmUpdate.setBigDecimal(3, entity.getValue());
+    stmUpdate.setString(4, entity.getCode());
   }
 
   @Override
   protected void setSelectQueryParameters(PreparedStatement stmSelect, String value) throws SQLException {
-    // stmExclusao.setString(1, valor); // It can be a bug
     stmSelect.setString(1, value);
   }
 
