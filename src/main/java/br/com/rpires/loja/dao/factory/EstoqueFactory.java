@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 import br.com.rpires.loja.dao.generic.jdbc.ConnectionFactory;
 import br.com.rpires.loja.domain.Estoque;
-import br.com.rpires.loja.domain.ProdutoQuantidade;
 import br.com.rpires.loja.exceptions.DAOException;
 
 
@@ -18,7 +17,6 @@ public class EstoqueFactory {
 		estoque.setId(rs.getLong("id"));
     estoque.setCodigoNotaFiscalFornecedor(rs.getString("codigo_nota_fiscal_fornecedor"));
     estoque.setQuantidade(rs.getInt("quantidade"));
- //   estoque.setProdutoQuantidade();
 		return estoque;
 	}
 
