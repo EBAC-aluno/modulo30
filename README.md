@@ -1,3 +1,13 @@
+To make this project work, you need to create a Postgres database with the following setup:
+
+```
+Postgres <domain>:<port>: localhost:5432
+Database name: db_loja
+Username: ebac_user 
+Password: secret
+```
+
+Then, you need to create some tables following the SQL sample. You can do it by executing one by one, but you can put these SQL commands in a `script.sql` and run the command below. 
 
 ```bash
     psql -U ebac_user postgres -aqf script.sql
@@ -107,4 +117,15 @@ ALTER TABLE ONLY tb_produto_quantidade ADD CONSTRAINT fk_id_prod_venda FOREIGN K
 ALTER TABLE ONLY tb_produto_quantidade ADD CONSTRAINT fk_id_prod_venda_venda FOREIGN KEY (id_venda_fk) REFERENCES tb_venda(id);
 
 ALTER TABLE ONLY tb_estoque ADD CONSTRAINT fk_id_produto_quantidade FOREIGN KEY (id_produto_quantidade_fk) REFERENCES tb_produto_quantidade(id);
+```
+Now, you need to download a gradle jar by using the following command on the project root folder:
+
+```bash
+gradle wrapper 
+```
+
+I made some basic tests that can be run with the command below:
+
+```bash
+ ./gradlew clean test
 ```
